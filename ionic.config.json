@@ -1,0 +1,7 @@
+{
+  "name": "action-sheet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
