@@ -17,15 +17,7 @@ export class HomePage implements OnInit {
               private aptService: AppointmentService,
               private router: Router,
               public toastController: ToastController) {
-    //izbaciti u OnInit
-    aptService.getAllBookings().snapshotChanges().subscribe(response => {
-      this.bookings = [];
-      response.forEach(item => {
-        const newAppointment = item.payload.toJSON() as Appointment;
-        newAppointment.id = item.key;
-        this.bookings.push(newAppointment);
-      });
-    });
+
   }
 
   private onDeleteSelected(){
@@ -53,7 +45,16 @@ export class HomePage implements OnInit {
     this.router.navigate(['/view-appointment'], navigationExtras);
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.aptService.getAllBookings().snapshotChanges().subscribe(response => {
+      this.bookings = [];
+      response.forEach(item => {
+        const newAppointment = item.payload.toJSON() as Appointment;
+        newAppointment.id = item.key;
+        this.bookings.push(newAppointment);
+      });
+    });
+  }
 
   async presentActionSheet(){
     const actionSheet = await this.actionSheetCtrl.create({

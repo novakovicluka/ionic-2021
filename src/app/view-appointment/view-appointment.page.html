@@ -8,18 +8,26 @@
 </ion-header>,
 <ion-content fullscreen color="light">
   <ion-card>
-    <!-- <img src="./madison.jpg" /> -->
-    <ion-card-header>
-      <ion-card-subtitle color="primary">Tip pregleda</ion-card-subtitle>
-      <ion-card-title>{{appType[appointment.type]}}</ion-card-title>
-      <ion-card-subtitle color="primary">Ime pacijenta</ion-card-subtitle>
-      <ion-card-title>{{appointment.name}}</ion-card-title>
-      <ion-card-subtitle color="primary">Vreme pregleda</ion-card-subtitle>
-      <ion-card-title>{{appointment.date | date: 'medium'}}</ion-card-title>
-      <ion-card-subtitle color="primary">Kontakt telefon</ion-card-subtitle>
-      <ion-card-title>{{appointment.contact}}</ion-card-title>
-      <ion-card-subtitle color="primary">Broj zdravstvenog kartona</ion-card-subtitle>
-      <ion-card-title>{{appointment.patientId}}</ion-card-title>
-    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card-header>
+            <ion-card-subtitle color="primary">Tip pregleda</ion-card-subtitle>
+            <ion-card-title>{{appType[appointment.type]}}</ion-card-title>
+            <ion-card-subtitle color="primary">Ime pacijenta</ion-card-subtitle>
+            <ion-card-title>{{appointment.name}}</ion-card-title>
+            <ion-card-subtitle color="primary">Vreme pregleda</ion-card-subtitle>
+            <ion-card-title>{{appointment.date | date: 'medium'}}</ion-card-title>
+            <ion-card-subtitle color="primary">Kontakt telefon</ion-card-subtitle>
+            <ion-card-title>{{appointment.contact}}</ion-card-title>
+            <ion-card-subtitle color="primary">Broj zdravstvenog kartona</ion-card-subtitle>
+            <ion-card-title>{{appointment.patientId}}</ion-card-title>
+          </ion-card-header>
+        </ion-col>
+        <ion-col>
+            <ion-img [src]="getImage()" alt="Image image"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 </ion-content>

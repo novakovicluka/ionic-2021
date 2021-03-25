@@ -21,4 +21,8 @@ export class ViewAppointmentPage implements OnInit {
     this.appointment = history.state.booking;
   }
 
+  getImage() {
+    return `../../assets/images/${this.appointment.type}.png`;
+  }
+
 }

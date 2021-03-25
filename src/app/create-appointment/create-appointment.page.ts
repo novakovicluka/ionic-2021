@@ -2,7 +2,7 @@ import { Appointment } from './../shared/appointment.model';
 import { AppointmentType } from './../shared/appointment-type.enum';
 import { AppointmentService } from './../shared/appointment.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 
@@ -23,11 +23,11 @@ export class CreateAppointmentPage implements OnInit {
 
   ngOnInit() {
     this.bookingForm = this.fb.group({
-      name: ['', Validators.required],
-      date: ['' ],
-      type: ['', Validators.required],
-      contact: ['', Validators.required],
-      patientId: ['', Validators.required],
+      name: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      date: new FormControl('' , Validators.required),
+      type: new FormControl('', Validators.required),
+      contact: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      patientId: new FormControl('', [Validators.required, Validators.minLength(4)])
     });
 
     if (history.state.booking){
@@ -39,7 +39,9 @@ export class CreateAppointmentPage implements OnInit {
   }
 
   formSubmit() {
-    if (!this.bookingForm.valid) {
+    if (this.bookingForm.invalid) {
+      // Touching all fields triggers the display of error messages
+      this.bookingForm.markAllAsTouched();
       this.presentAlert();
       return;
     }
@@ -78,6 +80,13 @@ export class CreateAppointmentPage implements OnInit {
 
     await alert.present();
   }
+
+
+  get name() { return this.bookingForm.get('name'); }
+  get date() { return this.bookingForm.get('date'); }
+  get type() { return this.bookingForm.get('type'); }
+  get contact() { return this.bookingForm.get('contact'); }
+  get patientId() { return this.bookingForm.get('patientId'); }
 
 
 }

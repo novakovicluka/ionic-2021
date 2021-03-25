@@ -17,21 +17,36 @@
     <ion-select-option *ngFor="let enum of appType | keyvalue" [value]="enum.key">{{enum.value}}</ion-select-option>
     </ion-select>
   </ion-item>
+  <ion-item *ngIf="type.invalid && (type.dirty || type.touched)">
+    <ion-label slot="start" color="danger">Izaberite tip pregleda.</ion-label>
+  </ion-item>
   <ion-item>
     <ion-label color="primary">Datum pregleda</ion-label>
     <ion-datetime formControlName="date" cancel-text="Otkazi" doneText="Unesi" displayFormat="D MMM YYYY H:mm" placeholder="Izaberite datum"></ion-datetime>
+  </ion-item>
+  <ion-item *ngIf="date.invalid && (date.dirty || date.touched)">
+    <ion-label slot="start" color="danger">Unesite datum pregleda.</ion-label>
   </ion-item>
   <ion-item>
     <ion-label color="primary" position="floating">Ime i prezime</ion-label>
     <ion-input formControlName="name"></ion-input>
   </ion-item>
+  <ion-item *ngIf="name.invalid && (name.dirty || name.touched)">
+    <ion-label slot="start" color="danger">Unesite ime i prezime.</ion-label>
+  </ion-item>
   <ion-item>
     <ion-label color="primary" position="floating">Broj zdravstvenog kartona</ion-label>
     <ion-input formControlName="patientId"></ion-input>
   </ion-item>
+  <ion-item *ngIf="patientId.invalid && (patientId.dirty || patientId.touched)">
+    <ion-label slot="start" color="danger">Unesite broj kartona.</ion-label>
+  </ion-item>
   <ion-item>
     <ion-label color="primary" position="floating">Kontakt telefon</ion-label>
     <ion-input formControlName="contact"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="contact.invalid && (contact.dirty || contact.touched)">
+    <ion-label slot="start" color="danger">Unesite kontakt telefon.</ion-label>
   </ion-item>
 </ion-list>
 <ion-row>
