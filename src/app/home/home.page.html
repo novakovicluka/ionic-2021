@@ -1,20 +1,38 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" >
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title size="medium">
+      Zakazani pregledi
     </ion-title>
+    <ion-thumbnail slot="start">
+      <ion-img src="assets/icon/icon.png"></ion-img>
+    </ion-thumbnail>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-list inset="true" lines="full">
+      <ion-list-header color="primary" lines="inset">Termini</ion-list-header>
+      <ion-item *ngFor="let booking of bookings" class="user-list" color="light">
+        <ion-label style="font-size: 15px;">{{ booking.name }} ({{booking.date | date:'short'}})</ion-label>
+        <ion-button slot="end" (click)="presentActionSheet(); this.selectedBooking = booking"><ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+      </ion-item>
+      <ion-note color="danger" *ngIf="bookings?.length === 0">Ne postoji nijedan zakazani pregled.</ion-note>
+    </ion-list>
 </ion-content>
+<ion-footer>
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button routerLinkActive="tab-selected" routerLink="/home" class="ios" tab="home">
+        <ion-icon name="list"></ion-icon>
+        <ion-label>Zakazani pregledi</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLinkActive="tab-selected" routerLink="/create-appointment" class="ios" >
+        <ion-icon name="add-circle"></ion-icon>
+        <ion-label>Dodaj novi pregled</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>
+</ion-footer>

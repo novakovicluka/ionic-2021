@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="home" text="Nazad"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="isAddMode">Kreiraj pregled</ion-title>
+    <ion-title *ngIf="!isAddMode">Izmeni pregled</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<form [formGroup]="bookingForm" (ngSubmit)="formSubmit()" class="no-scroll">
+<ion-list>
+  <ion-item>
+    <ion-label color="primary">Tip pregleda</ion-label>
+    <ion-select  formControlName="type" interface="popover">
+    <ion-select-option *ngFor="let enum of appType | keyvalue" [value]="enum.key">{{enum.value}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary">Datum pregleda</ion-label>
+    <ion-datetime formControlName="date" cancel-text="Otkazi" doneText="Unesi" displayFormat="D MMM YYYY H:mm" placeholder="Izaberite datum"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" position="floating">Ime i prezime</ion-label>
+    <ion-input formControlName="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" position="floating">Broj zdravstvenog kartona</ion-label>
+    <ion-input formControlName="patientId"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" position="floating">Kontakt telefon</ion-label>
+    <ion-input formControlName="contact"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-row>
+  <ion-col>
+    <ion-button type="submit" color="primary" shape="full" expand="block">
+      <ion-label *ngIf="isAddMode">Zakazi pregled</ion-label>
+      <ion-label *ngIf="!isAddMode">Izmeni pregled</ion-label>
+    </ion-button>
+  </ion-col>
+</ion-row>
+</form>
+</ion-content>
