@@ -1,12 +1,12 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyAdhOysnxJNJkN8oiB31dgIl-HTdSx1Dsc",
-    authDomain: "ionic-firebase-b1f89.firebaseapp.com",
-    projectId: "ionic-firebase-b1f89",
-    storageBucket: "ionic-firebase-b1f89.appspot.com",
-    messagingSenderId: "1024373258385",
-    appId: "1:1024373258385:web:2985a628ce69e2974fa730",
-    measurementId: "G-KCMVPJE5NJ"
+  apiKey: "AIzaSyCZchV2c_YP1cIaCEjziKiLIxB90M83VN4",
+  authDomain: "doctor-app-2f29d.firebaseapp.com",
+  databaseURL: "https://doctor-app-2f29d-default-rtdb.firebaseio.com",
+  projectId: "doctor-app-2f29d",
+  storageBucket: "doctor-app-2f29d.appspot.com",
+  messagingSenderId: "32151422301",
+  appId: "1:32151422301:web:3b3597af316d9d39e8d4b4"
   }
 };
